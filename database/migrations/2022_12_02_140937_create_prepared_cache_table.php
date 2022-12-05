@@ -20,6 +20,13 @@ return new class extends Migration
             $table->bigInteger('position')->default(0)->comment('Позиция');
             $table->timestamps();
         });
+
+        Schema::table('prepared_cache', function (Blueprint $table){
+            $table->unique([
+               'category_id',
+               'cache_date'
+            ], 'u_idx');
+        });
     }
 
     /**

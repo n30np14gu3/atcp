@@ -54,7 +54,7 @@ trait CategoriesParser
                 'position' => $minPos
             ];
         }
-        PreparedCache::query()->insert($insert_arr);
+        PreparedCache::query()->insertOrIgnore($insert_arr);
         return  $arr;
     }
 
@@ -78,24 +78,6 @@ trait CategoriesParser
             }
         }
 
-        //Kostyl'
-        $db_arr = PreparedCache::query()->get()->makeHidden([
-            'created_at',
-            'updated_at',
-            'id'
-        ])->toArray();
-        foreach($insert_arr as $key => $item){
-
-            foreach($db_arr as $db_item){
-                if(
-                    $item['category_id'] == $db_item['category_id'] &&
-                    $item['cache_date'] === $db_item['cache_date'] &&
-                    $item['position'] === $db_item['position']
-                )
-                    unset($insert_arr[$key]);
-
-            }
-        }
-        PreparedCache::query()->insert($insert_arr);
+        PreparedCache::query()->insertOrIgnore($insert_arr);
     }
 }

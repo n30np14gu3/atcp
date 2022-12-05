@@ -32,7 +32,7 @@ class PrepareData extends Command
     public function handle()
     {
         $endTime = now();
-        $startTime = now()->copy()->addMonth();
+        $startTime = now()->copy()->subMonth();
         $getter = new EndpointInfoGetter();
         $data = $getter->getInfo($startTime->format('Y-m-d'), $endTime->format('Y-m-d'));
         if($data !== null){
