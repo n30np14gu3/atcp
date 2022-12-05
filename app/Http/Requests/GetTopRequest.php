@@ -29,7 +29,7 @@ class GetTopRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required|date_format:Y-m-d|before:today|after:'.now()->subMonth()->format('Y-m-d')
+            'date' => 'required|date_format:Y-m-d|before:today'
         ];
     }
 
