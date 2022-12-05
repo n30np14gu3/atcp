@@ -17,6 +17,7 @@ class PreparedCache extends Model
     protected $table = 'prepared_cache';
     public $timestamps = false;
 
+
     protected $fillable = [
         'cache_date',
         'category_id',
@@ -24,7 +25,8 @@ class PreparedCache extends Model
     ];
 
     protected $casts = [
-        'position' => 'integer'
+        'position' => 'integer',
+        'category_id' => 'string'
     ];
 
 }

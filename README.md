@@ -22,3 +22,8 @@ php artisan key:generate
 php artisan migrate
 php artisan serve
 ```
+
+## Run schedule (data prepare monthly)
+```shell
+php artisan schedule:run
+```
